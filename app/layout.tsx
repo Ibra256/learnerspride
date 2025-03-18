@@ -1,8 +1,11 @@
+// RootLayout.tsx
+import { useRef } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/Navbar";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -23,14 +26,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Create refs for each section
+  const heroRef = useRef<HTMLDivElement>(null);
+  const missionRef = useRef<HTMLDivElement>(null);
+  const profilesRef = useRef<HTMLDivElement>(null);
+  const curriculumRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system">
-        <Navbar/>
-        {children}
+          <Navbar
+            heroRef={heroRef as React.RefObject<HTMLDivElement>}
+            missionRef={missionRef as React.RefObject<HTMLDivElement>}
+            profilesRef={profilesRef as React.RefObject<HTMLDivElement>}
+            curriculumRef={curriculumRef as React.RefObject<HTMLDivElement>}
+            contactRef={contactRef as React.RefObject<HTMLDivElement>}
+            galleryRef={galleryRef as React.RefObject<HTMLDivElement>}
+          />
+          {children}
         </ThemeProvider>
       </body>
     </html>
