@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, forwardRef } from "react";
+import Image from "next/image"; // Import the Image component
 
 const Gallery = forwardRef<HTMLDivElement, Record<string, never>>((_, ref) => {
   const [isClient, setIsClient] = useState(false);
@@ -26,10 +27,13 @@ const Gallery = forwardRef<HTMLDivElement, Record<string, never>>((_, ref) => {
               key={index}
               className="relative group overflow-hidden rounded-lg shadow-lg"
             >
-              <img
+              {/* Use the next/image component */}
+              <Image
                 src={src}
                 alt={`Gallery Image ${index + 1}`}
                 className="w-full h-full object-cover transition-transform duration-500 ease-in-out transform group-hover:scale-110"
+                width={500} // Set a default width for the image
+                height={500} // Set a default height for the image
               />
               <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

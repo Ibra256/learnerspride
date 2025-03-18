@@ -1,13 +1,12 @@
-"use client";
-
 import React, { useState, useEffect, forwardRef } from "react";
 import dynamic from "next/dynamic";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Image from "next/image"; // Import Image from next/image
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
-const HeroSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+const HeroSection = forwardRef<HTMLDivElement, object>((_, ref) => {
   const images = ["/test8.png", "/test9.png", "/test10.png", "/2024-06-08.jpg"];
   const [mounted, setMounted] = useState(false);
 
@@ -52,10 +51,13 @@ const HeroSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
       <Slider {...settings} className="w-full h-full">
         {images.map((src, index) => (
           <div key={index} className="relative w-full h-full">
-            <img
+            {/* Use the next/image component */}
+            <Image
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-full object-cover object-center"
+              width={1200} // Set a width for optimization
+              height={500} // Set a height for optimization
             />
           </div>
         ))}

@@ -3,7 +3,8 @@
 import React, { forwardRef } from "react";
 import { FaBookOpen, FaEye, FaLightbulb } from "react-icons/fa";
 
-const MissionVision = forwardRef<HTMLDivElement, {}>((_, ref) => {
+// Use `Record<string, unknown>` for the props type
+const MissionVision = forwardRef<HTMLDivElement, Record<string, unknown>>((_, ref) => {
   return (
     <section ref={ref} className="bg-white py-16 px-6 md:px-12 lg:px-20">
       <div className="max-w-6xl mx-auto text-center">

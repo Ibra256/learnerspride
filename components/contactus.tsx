@@ -3,7 +3,7 @@ import React, { useState, useEffect, forwardRef } from "react";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 
-const ContactUs = forwardRef<HTMLDivElement, {}>((_, ref) => {
+const ContactUs = forwardRef<HTMLDivElement, Record<string, unknown>>((_, ref) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
