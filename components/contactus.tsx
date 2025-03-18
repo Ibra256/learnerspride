@@ -1,4 +1,5 @@
-"use client";
+"use client"; // Ensure it's a Client Component
+
 import React, { useState, useEffect, forwardRef } from "react";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
@@ -40,6 +41,7 @@ const ContactUs = forwardRef<HTMLDivElement, Record<string, unknown>>((_, ref) =
       setFormStatus("Message sent successfully!");
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
+      console.error(error); // Log the error for debugging purposes
       setFormStatus("Failed to send message. Please try again later.");
     }
 
@@ -136,9 +138,7 @@ const ContactUs = forwardRef<HTMLDivElement, Record<string, unknown>>((_, ref) =
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded-md focus:outline-none ${
-              isSubmitting ? "bg-gray-400" : "hover:bg-blue-700"
-            }`}
+            className={`w-full px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded-md focus:outline-none ${isSubmitting ? "bg-gray-400" : "hover:bg-blue-700"}`}
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </button>
