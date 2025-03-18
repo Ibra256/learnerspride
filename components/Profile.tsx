@@ -1,6 +1,6 @@
 "use client"; // Ensures it runs in the client
 
-import { useEffect, useState, forwardRef  } from "react";
+import { useEffect, useState, forwardRef } from "react";
 import Image from "next/image";
 
 const profiles = [
@@ -27,7 +27,7 @@ const profiles = [
   },
 ];
 
-const Profiles= forwardRef<HTMLDivElement, {}>((_, ref) => {
+const Profiles = forwardRef<HTMLDivElement, { [key: string]: unknown }>((_, ref) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -45,7 +45,10 @@ const Profiles= forwardRef<HTMLDivElement, {}>((_, ref) => {
 
       <div className="mt-12 grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
         {profiles.map((profile, index) => (
-          <div key={index} className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center text-center transition-transform duration-300 hover:scale-105">
+          <div
+            key={index}
+            className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center text-center transition-transform duration-300 hover:scale-105"
+          >
             <Image
               src={profile.image}
               alt={profile.name}
@@ -62,5 +65,8 @@ const Profiles= forwardRef<HTMLDivElement, {}>((_, ref) => {
     </section>
   );
 });
+
+// Set display name for the component
+Profiles.displayName = "Profiles";
 
 export default Profiles;

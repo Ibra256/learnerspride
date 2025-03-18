@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 
-const Curriculum = forwardRef<HTMLDivElement, {}>((_, ref) => {
+const Curriculum = forwardRef<HTMLDivElement, Record<string, never>>((_, ref) => {
   return (
     <div ref={ref} className="bg-gray-50 py-12">
       <div className="container mx-auto p-6">
@@ -42,5 +42,8 @@ const Curriculum = forwardRef<HTMLDivElement, {}>((_, ref) => {
     </div>
   );
 });
+
+// Assign display name to fix the missing name warning
+Curriculum.displayName = "Curriculum";
 
 export default Curriculum;

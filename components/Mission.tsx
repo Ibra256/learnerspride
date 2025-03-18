@@ -1,14 +1,16 @@
 "use client"; // Ensure it's a Client Component
 
-import React, { useState, useEffect, forwardRef } from 'react';
+import React, { forwardRef } from "react";
 import { FaBookOpen, FaEye, FaLightbulb } from "react-icons/fa";
 
-const MissionVision= forwardRef<HTMLDivElement, {}>((_, ref) => {
+const MissionVision = forwardRef<HTMLDivElement, {}>((_, ref) => {
   return (
     <section ref={ref} className="bg-white py-16 px-6 md:px-12 lg:px-20">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold text-blue-600">Our Mission, Vision & Motto</h2>
-        <p className="text-gray-600 mt-2 text-lg">Guiding principles that shape our learners' future.</p>
+        <p className="text-gray-600 mt-2 text-lg">
+          Guiding principles that shape our learners' future.
+        </p>
       </div>
 
       <div className="mt-12 grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -42,5 +44,8 @@ const MissionVision= forwardRef<HTMLDivElement, {}>((_, ref) => {
     </section>
   );
 });
+
+// Fix Next.js forwardRef warning
+MissionVision.displayName = "MissionVision";
 
 export default MissionVision;

@@ -1,27 +1,23 @@
-"use client"
-import React, { useState, useEffect, forwardRef } from 'react';
+"use client";
+import React, { useState, useEffect, forwardRef } from "react";
 
-const Gallery= forwardRef<HTMLDivElement, {}>((_, ref) => {
+const Gallery = forwardRef<HTMLDivElement, Record<string, never>>((_, ref) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // This ensures the logic runs only on the client-side
     setIsClient(true);
   }, []);
 
-  const images = [
-    '/test8.png',
-    '/test9.png',
-    '/test10.png',
-    
-  ];
+  const images = ["/test8.png", "/test9.png", "/test10.png"];
 
-  if (!isClient) return null; // Render nothing on SSR
+  if (!isClient) return null; // Avoid SSR issues
 
   return (
     <div ref={ref} className="bg-gray-50 py-12">
       <div className="container mx-auto px-6 lg:px-16">
-        <h1 className="text-4xl font-extrabold text-center text-blue-600 mb-12">Gallery</h1>
+        <h1 className="text-4xl font-extrabold text-center text-blue-600 mb-12">
+          Gallery
+        </h1>
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -46,5 +42,8 @@ const Gallery= forwardRef<HTMLDivElement, {}>((_, ref) => {
     </div>
   );
 });
+
+// Assign display name to fix the missing name warning
+Gallery.displayName = "Gallery";
 
 export default Gallery;

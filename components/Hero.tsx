@@ -46,10 +46,9 @@ const HeroSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
 
   return (
     <section
-    ref={ref}
-    className="relative w-full mt-[100px] min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] rounded-b-lg shadow-xl overflow-hidden"
-  >
-  
+      ref={ref}
+      className="relative w-full mt-[100px] min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] rounded-b-lg shadow-xl overflow-hidden"
+    >
       <Slider {...settings} className="w-full h-full">
         {images.map((src, index) => (
           <div key={index} className="relative w-full h-full">
@@ -77,5 +76,7 @@ const HeroSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
     </section>
   );
 });
+
+HeroSection.displayName = "HeroSection"; // Fix for Next.js warning
 
 export default HeroSection;
